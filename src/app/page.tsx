@@ -1,103 +1,100 @@
+'use client'
 import Image from "next/image";
-
+import Typewriter from 'typewriter-effect';
+import { useState, useRef, useEffect } from "react";
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+ const [showMore, setShowMore] = useState(false);
+  const contentRef = useRef<HTMLParagraphElement | null>(null);
+  const [maxHeight, setMaxHeight] = useState<string>("5rem"); // ~3 lines
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  const content = `At Tech Tycoons, we are more than just an IT solutions agency—we are technology innovators,
+problem solvers, and digital transformation partners. With a passion for cutting-edge technology, 
+we empower businesses with scalable, secure, and future-ready IT solutions that drive growth and efficiency. 
+Founded with the vision to redefine IT excellence, Tech Tycoons is a team of technology enthusiasts, IT experts, 
+and cybersecurity specialists committed to delivering high-performance IT infrastructure, 
+cloud solutions, cybersecurity, and digital transformation services.
+We help businesses adapt, evolve, and thrive in the ever-changing digital landscape.`;
+
+  // Update maxHeight dynamically when showMore toggles
+  useEffect(() => {
+    if (contentRef.current) {
+      setMaxHeight(showMore ? `${contentRef.current.scrollHeight}px` : "8.5rem");
+    }
+  }, [showMore]);
+
+
+  return (
+    <div className="  w-full">
+
+
+<div className="mt-2 w-full  rounded-2xl h-[35vh] sm:h-[80vh] relative overflow-hidden">
+  <Image
+    src="/Banner.webp"
+    alt="Background"
+    fill
+    className="object-cover"
+  />
+    <h1 className="text-4xl md:text-6xl font-light text-white absolute left-5 md:left-10 top-3 md:top-5">
+    <span className="text-3xl md:text-5xl">making things possible for</span>  
+      <Typewriter
+        options={{
+          strings: ['problem solving.', 'brand building.', 'ease of operations.'],
+          autoStart: true,
+          loop: true,
+          deleteSpeed: 100,
+          delay: 95,
+        }}
+      />
+    </h1>
+
+</div>
+<div className="mt-3.5 bg-white rounded-2xl flex flex-col md:flex-row gap-5 justify-start px-3 py-3 w-full border-[1.1px] border-black">
+  {/* Image */}
+  <div className="rounded-2xl h-64 sm:h-[50vh] w-full md:w-[25vw] xl:w-[30vw] bg-amber-600 relative overflow-hidden">
+    <Image
+      src="/about-us-man-img.webp"
+      alt="Background"
+      fill
+      className="object-cover"
+    />
+  </div>
+
+  {/* Text */}
+  <div className="w-full md:w-[75vw] xl:w-[70vw] flex flex-col relative">
+    <h2 className="text-[#7DBB42] text-3xl sm:text-4xl lg:text-6xl font-semibold text-start mb-2">
+      Something About Us
+    </h2>
+
+    {/* Text container */}
+    <div
+      className="relative overflow-hidden transition-all duration-500 ease-in-out"
+      style={{ maxHeight }}
+    >
+      <p
+        ref={contentRef}
+        className="text-sm sm:text-md lg:text-lg text-black transition-opacity duration-500"
+      >
+        {content}
+      </p>
+
+      {/* Fade overlay at bottom */}
+      {!showMore && (
+        <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+      )}
+    </div>
+
+    <button
+      className="mt-2 text-black font-bold hover:underline self-start"
+      onClick={() => setShowMore(!showMore)}
+    >
+      {showMore ? "Show Less" : "Read More"}
+    </button>
+  </div>
+</div>
+
+
+
+      {/* You can add components here */}
     </div>
   );
 }
