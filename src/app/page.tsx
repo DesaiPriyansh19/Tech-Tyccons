@@ -7,7 +7,15 @@ import { HiLocationMarker } from 'react-icons/hi'
 import { MdEmail, MdPhone } from 'react-icons/md'
 import { motion } from "framer-motion";
 const technologies = [
+    {
+    src: "/nextjs-logo.webp",
+    alt: "Next.js",
+
+    width: 140,
+    height: 140,
+  },
   {
+    
     src: "/mern3.png",
     alt: "MERN Stack",
  
@@ -28,13 +36,7 @@ const technologies = [
     width: 150,
     height: 150,
   },
-  {
-    src: "/nextjs-logo.webp",
-    alt: "Next.js",
 
-    width: 140,
-    height: 140,
-  },
 ];
  const cards = [
     { bg: "#7DBB42", text: "01. IT Infrastructure & Networking" },
@@ -196,7 +198,7 @@ const handleDotClick = (idx: number) => {
 
 {/* technologies we use */}
 
-<div className="w-full mt-5 lg:mt-12 hidden sm:flex flex-col items-center">
+<div className="w-full mt-2 bg-amber-300 lg:mt-12 hidden sm:flex flex-col items-center">
       {/* Technologies Section */}
       <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-6 w-full">
           <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[20vh]  flex lg:hidden items-center justify-center">
@@ -265,14 +267,14 @@ const handleDotClick = (idx: number) => {
 {/* Mobile Layout */}
 <div className="w-full mt-0 flex flex-col items-center md:hidden">
   {/* Heading */}
-  <div className="rounded-3xl py-2.5 px-4 w-full h-[40vh] flex items-center justify-center">
-    <h2 className="text-4xl font-semibold text-[#464646] text-center">
+  <div className="rounded-3xl  py-2.5 px-4 w-full h-[10vh] mt-12 flex items-center justify-center">
+    <h2 className="text-3xl font-semibold text-[#464646] text-center">
       Technologies <br /> We Use
     </h2>
   </div>
 
   {/* Slides */}
-  <div className="relative w-full overflow-hidden mt-6">
+  <div className="relative w-full overflow-hidden  sm:mt-6">
     <div
       className="flex transition-transform duration-700 ease-in-out"
       style={{ transform: `translateX(-${currentIndex * 100}%)` }} // 1 slide per view
@@ -392,7 +394,7 @@ const handleDotClick = (idx: number) => {
 {/* Mobile Layout Carousel */}
 <div className="w-full mt-24 lg:hidden">
   {/* Heading */}
-  <div className="text-4xl font-bold text-[#464646] text-center mb-6">
+  <div className="text-3xl font-bold text-[#464646] text-center mb-6">
     This is What we do?
   </div>
 
@@ -523,7 +525,7 @@ const handleDotClick = (idx: number) => {
   </div>
 
 </div>
-<div className="flex flex-wrap items-center justify-center gap-3 lg:gap-10 text-black">
+<div className="flex flex-col sm:flex-row sm:flex-wrap text-start pl-10 sm:p-0 sm:items-center justify-center gap-3 lg:gap-10 text-black">
   {[
     "IT Infrastructure & Networking",
     "AI Based Automation",
@@ -535,7 +537,7 @@ const handleDotClick = (idx: number) => {
   ].map((text, idx) => (
     <p
       key={idx}
-      className="text-lg font-medium  relative cursor-pointer after:content-[''] after:block after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 after:mt-1 hover:after:w-full"
+      className="text-sm sm:text-lg font-medium  relative cursor-pointer after:content-[''] after:block after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 after:mt-1 hover:after:w-full"
     >
       {text}
     </p>
