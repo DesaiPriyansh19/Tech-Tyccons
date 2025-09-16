@@ -153,7 +153,7 @@ const [currentIndex, setCurrentIndex] = useState(0);
 </div>
 
 {/* About Us */}
-<div className="mt-8 sm:mt-12 bg-white rounded-2xl flex flex-col md:flex-row gap-5 justify-center sm:justify-start px-3 py-1 sm:py-3 w-full border-[1.1px] border-black ">
+<div className="mt-8  sm:mt-12 bg-amber-200 rounded-2xl flex flex-col md:flex-row gap-5 justify-center sm:justify-start px-3 py-1 sm:py-3 w-full border-[1.1px] border-black ">
      <h2 className="text-[#7DBB42]  flex sm:hidden text-[2rem] sm:text-4xl lg:text-6xl font-bold sm:font-semibold text-center ">
       Something About Us
     </h2>
@@ -169,7 +169,7 @@ const [currentIndex, setCurrentIndex] = useState(0);
   </div>
 
   {/* Text */}
-  <div className="w-full md:w-[75vw] xl:w-[70vw] flex flex-col relative">
+  <div className="w-full pb-6 md:w-[75vw] xl:w-[70vw] flex flex-col relative">
     <h2 className="text-[#7DBB42] hidden sm:flex  text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-semibold text-start mb-2">
       Something About Us
     </h2>
