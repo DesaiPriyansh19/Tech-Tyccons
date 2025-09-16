@@ -21,10 +21,11 @@ export default function Navbar() {
           href="#"
           className="flex items-center text-black transition-colors duration-300 group-hover:!text-[#F04F24]"
         >
-          {item}
-          <span className="ml-1 font-semibold text-lg opacity-0 transform translate-y-0 rotate-0 group-hover:opacity-100 group-hover:translate-y-1 group-hover:rotate-15 transition-all duration-300">
+              <span className="mr-2  text-lg opacity-0 transform translate-x-0 rotate-0 group-hover:opacity-100 group-hover:translate-x-1  transition-all duration-300">
             →
           </span>
+          {item}
+      
         </a>
       </li>
     )

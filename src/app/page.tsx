@@ -2,6 +2,92 @@
 import Image from "next/image";
 import Typewriter from 'typewriter-effect';
 import { useState, useRef, useEffect } from "react";
+import { FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
+import { HiLocationMarker } from 'react-icons/hi'
+import { MdEmail, MdPhone } from 'react-icons/md'
+import { motion } from "framer-motion";
+const technologies = [
+  {
+    src: "/mern3.png",
+    alt: "MERN Stack",
+ 
+    width: 170,
+    height: 170,
+  },
+  {
+    src: "/react-native-logo.png",
+    alt: "React Native",
+
+    width: 190,
+    height: 190,
+  },
+  {
+    src: "/strapi-logo.png",
+    alt: "Strapi CMS",
+
+    width: 150,
+    height: 150,
+  },
+  {
+    src: "/nextjs-logo.webp",
+    alt: "Next.js",
+
+    width: 140,
+    height: 140,
+  },
+];
+ const cards = [
+    { bg: "#7DBB42", text: "01. IT Infrastructure & Networking" },
+    { bg: "#2DA0D9", text: "02. AI Based Automation" },
+    { bg: "#F04F24", text: "03. Cloud Solutions" },
+    { bg: "#464646", text: "04. Cybersecurity & Compliance" },
+  ];
+  // Define this at the top of your component or import from a file
+const technologiesMobile = [
+  {
+    title: "IT Infrastructure & Networking",
+    desc: "Reliable, secure, and high-performing IT setups.",
+    bg: "#7DBB42",
+    number: "01"
+  },
+  {
+    title: "AI Based Automation",
+    desc: "Optimizing business processes with AI-driven automation.",
+    bg: "#2DA0D9",
+    number: "02"
+  },
+  {
+    title: "Cloud Solutions",
+    desc: "Migration, deployment, and cloud management on AWS, Azure, and hybrid platforms.",
+    bg: "#F04F24",
+    number: "03"
+  },
+  {
+    title: "Cybersecurity & Compliance",
+    desc: "Advanced firewall security, data protection, and threat detection.",
+    bg: "#2DA0D9",
+    number: "04"
+  },
+  {
+    title: "IT Consulting & Support",
+    desc: "Strategic IT guidance and 24/7 enterprise support.",
+    bg: "#F04F24",
+    number: "05"
+  },
+  {
+    title: "Software Development & Integration",
+    desc: "Custom-built business applications & seamless software integration.",
+    bg: "#2DA0D9",
+    number: "06"
+  },
+  {
+    title: "Branding Design",
+    desc: "Extraordinary Branding design for an extraordinary Brand value.",
+    bg: "#7DBB42",
+    number: "07"
+  },
+];
+
 export default function Home() {
  const [showMore, setShowMore] = useState(false);
   const contentRef = useRef<HTMLParagraphElement | null>(null);
@@ -21,13 +107,30 @@ We help businesses adapt, evolve, and thrive in the ever-changing digital landsc
       setMaxHeight(showMore ? `${contentRef.current.scrollHeight}px` : "8.5rem");
     }
   }, [showMore]);
+const [currentIndex, setCurrentIndex] = useState(0);
+
+  const totalSlides = Math.ceil(technologies.length / 2);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) =>
+        prev + 1 >= totalSlides ? 0 : prev + 1
+      );
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [totalSlides]);
+
+  const handleDotClick = (idx) => {
+    setCurrentIndex(idx);
+  };
 
 
   return (
     <div className="  w-full">
 
-
-<div className="mt-2 w-full  rounded-2xl h-[35vh] sm:h-[80vh] relative overflow-hidden">
+{/* Hero Section */}
+<div className="mt-2 w-full  rounded-2xl h-[39vh] sm:h-[40vh] lg:h-[82vh] relative overflow-hidden">
   <Image
     src="/Banner.webp"
     alt="Background"
@@ -48,9 +151,15 @@ We help businesses adapt, evolve, and thrive in the ever-changing digital landsc
     </h1>
 
 </div>
-<div className="mt-3.5 bg-white rounded-2xl flex flex-col md:flex-row gap-5 justify-start px-3 py-3 w-full border-[1.1px] border-black">
+
+{/* About Us */}
+<div className="mt-8 sm:mt-12 bg-white rounded-2xl flex flex-col md:flex-row gap-5 justify-center sm:justify-start px-3 py-1 sm:py-3 w-full border-[1.1px] border-black ">
+     <h2 className="text-[#7DBB42]  flex sm:hidden text-[2rem] sm:text-4xl lg:text-6xl font-bold sm:font-semibold text-center ">
+      Something About Us
+    </h2>
   {/* Image */}
-  <div className="rounded-2xl h-64 sm:h-[50vh] w-full md:w-[25vw] xl:w-[30vw] bg-amber-600 relative overflow-hidden">
+  <div className="rounded-2xl h-64 w-full md:h-[30vh] lg:h-[50vh]  lg:w-[25vw] xl:w-[30vw] bg-amber-600 relative overflow-hidden">
+   
     <Image
       src="/about-us-man-img.webp"
       alt="Background"
@@ -61,7 +170,7 @@ We help businesses adapt, evolve, and thrive in the ever-changing digital landsc
 
   {/* Text */}
   <div className="w-full md:w-[75vw] xl:w-[70vw] flex flex-col relative">
-    <h2 className="text-[#7DBB42] text-3xl sm:text-4xl lg:text-6xl font-semibold text-start mb-2">
+    <h2 className="text-[#7DBB42] hidden sm:flex  text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-semibold text-start mb-2">
       Something About Us
     </h2>
 
@@ -72,29 +181,370 @@ We help businesses adapt, evolve, and thrive in the ever-changing digital landsc
     >
       <p
         ref={contentRef}
-        className="text-sm sm:text-md lg:text-lg text-black transition-opacity duration-500"
+        className="text-sm sm:text-lg md:text-lg  lg:text-lg xl:text-xl text-black transition-opacity duration-500"
       >
         {content}
       </p>
 
-      {/* Fade overlay at bottom */}
-      {!showMore && (
-        <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-      )}
+    
     </div>
 
-    <button
-      className="mt-2 text-black font-bold hover:underline self-start"
-      onClick={() => setShowMore(!showMore)}
+
+  </div>
+</div>
+
+{/* technologies we use */}
+
+<div className="w-full mt-5 lg:mt-12 hidden sm:flex flex-col items-center">
+      {/* Technologies Section */}
+      <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-6 w-full">
+          <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[20vh]  flex lg:hidden items-center justify-center">
+          <h2 className="text-5xl font-semibold text-[#464646] text-center">
+            Technologies <br /> We Use
+          </h2>
+        </div>
+        {/* Slides */}
+        <div className="relative flex-1 overflow-hidden">
+          <div
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {Array.from({ length: totalSlides }).map((_, slideIdx) => {
+              const start = slideIdx * 2;
+              const items = technologies.slice(start, start + 2);
+
+              return (
+                <div
+                  key={slideIdx}
+                  className="flex min-w-full justify-center gap-6"
+                >
+                  {items.map((tech, idx) => (
+                    <div
+                      key={idx}
+                      className="border rounded-3xl py-4 px-3 min-w-[40%] h-[40vh] bg-white border-gray-300 shadow-md hover:shadow-xl transition"
+                    >
+                      <Image
+                        src={tech.src}
+                        alt={tech.alt}
+                        width={tech.width}
+                        height={tech.height}
+                        className="mx-auto"
+                      />
+                    
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center lg:mt-6 gap-2">
+            {Array.from({ length: totalSlides }).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleDotClick(idx)}
+                className={`w-3 h-3 rounded-full transition ${
+                  idx === currentIndex ? "bg-[#464646]" : "bg-gray-400"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Static Heading */}
+         
+        <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[40vh] hidden lg:flex items-center justify-center">
+          <h2 className="text-5xl font-semibold text-[#464646] text-center">
+            Technologies <br /> We Use
+          </h2>
+        </div>
+      </div>
+    </div>
+{/* Mobile Layout */}
+<div className="w-full mt-0 flex flex-col items-center md:hidden">
+  {/* Heading */}
+  <div className="rounded-3xl py-2.5 px-4 w-full h-[40vh] flex items-center justify-center">
+    <h2 className="text-4xl font-semibold text-[#464646] text-center">
+      Technologies <br /> We Use
+    </h2>
+  </div>
+
+  {/* Slides */}
+  <div className="relative w-full overflow-hidden mt-6">
+    <div
+      className="flex transition-transform duration-700 ease-in-out"
+      style={{ transform: `translateX(-${currentIndex * 100}%)` }} // 1 slide per view
     >
-      {showMore ? "Show Less" : "Read More"}
-    </button>
+      {technologies.map((tech, idx) => (
+        <div
+          key={idx}
+          className="min-w-full flex justify-center px-3"
+        >
+          <div className="border rounded-3xl py-4 px-3 w-[90%] h-[40vh] bg-white border-gray-300 shadow-md hover:shadow-xl transition">
+            <Image
+              src={tech.src}
+              alt={tech.alt}
+              width={tech.width}
+              height={tech.height}
+              className="mx-auto"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Dots */}
+    <div className="flex justify-center mt-6 gap-2">
+      {technologies.map((_, idx) => (
+        <button
+          key={idx}
+          onClick={() => handleDotClick(idx)}
+          className={`w-3 h-3 rounded-full transition ${
+            idx === currentIndex ? "bg-[#464646]" : "bg-gray-400"
+          }`}
+        />
+      ))}
+    </div>
+  </div>
+</div>
+
+
+{/* This Is What We Do */}
+<div className="w-full  hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-14 sm:mt-12  text-white">
+
+  <div className="h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] text-[#464646] rounded-br-3xl text-center font-bold sm:font-semibold text-[2rem] sm:text-6xl flex items-center justify-center p-6">
+    This is What we do?
+  </div>
+
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] pl-3.5 pr-2 py-4 rounded-tl-2xl font-semibold text-start">
+    <div className="bg-[#7DBB42] rounded-3xl p-4 h-full flex flex-col justify-between">
+      <h3 className="text-2xl sm:text-3xl font-bold">01.</h3>
+      <div>
+        <p className=" text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">IT Infrastructure & Networking</p>
+        <p className="text-sm md:text-2xl lg:text-sm font-normal mt-1.5">Reliable, secure, and high-performing IT setups.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
+    <div className="bg-[#2DA0D9] rounded-3xl p-4 h-full flex flex-col justify-between">
+      <h3 className="text-2xl sm:text-3xl font-bold">02.</h3>
+      <div>
+        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">AI Based Automation</p>
+        <p className="text-sm font-normal mt-1.5">Optimizing business processes with AI-driven automation.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 rounded-tr-2xl font-semibold text-start">
+    <div className="bg-[#F04F24] rounded-3xl p-4 h-full flex flex-col justify-between">
+      <h3 className="text-2xl sm:text-3xl font-bold">03.</h3>
+      <div>
+        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">Cloud Solutions</p>
+        <p className="text-sm font-normal mt-1.5">Migration, deployment, and cloud management on AWS, Azure, and hybrid platforms.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 rounded-tl-2xl rounded-bl-2xl  font-semibold text-start">
+    <div className="bg-[#2DA0D9] rounded-3xl p-4 h-full flex flex-col justify-between">
+      <h3 className="text-2xl sm:text-3xl font-bold">04.</h3>
+      <div>
+        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-2.5">Cybersecurity & Compliance</p>
+        <p className="text-sm font-normal mt-1">Advanced firewall security, data protection, and threat detection.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
+    <div className="bg-[#F04F24] rounded-3xl p-4 h-full flex flex-col justify-between">
+      <h3 className="text-2xl sm:text-3xl font-bold">05.</h3>
+      <div>
+        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">IT Consulting & Support</p>
+        <p className="text-sm font-normal mt-1.5">Strategic IT guidance and 24/7 enterprise support.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
+    <div className="bg-[#2DA0D9] rounded-3xl p-4 h-full flex flex-col justify-between">
+      <h3 className="text-2xl sm:text-3xl font-bold">06.</h3>
+      <div>
+        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">Software Development & Integration</p>
+        <p className="text-sm font-normal relative bottom-0">Custom-built business applications & seamless software integration.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="bg-[#464646] h-auto sm:h-[25vh] lg:rounded-br-2xl md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
+    <div className="bg-[#7DBB42] rounded-3xl p-4 h-full flex flex-col justify-between">
+      <h3 className="text-2xl sm:text-3xl font-bold">07.</h3>
+      <div>
+        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">Branding Design</p>
+        <p className="text-sm font-normal relative bottom-0">Extraordinary Branding design for an extraordinary Brand value.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+{/* Mobile Layout Carousel */}
+<div className="w-full mt-24 lg:hidden">
+  {/* Heading */}
+  <div className="text-4xl font-bold text-[#464646] text-center mb-6">
+    This is What we do?
+  </div>
+
+  {/* Horizontal scroll container */}
+  <div className="flex overflow-x-auto space-x-4 pr-4  snap-x snap-mandatory scroll-smooth">
+    {technologiesMobile.map((tech, idx) => (
+      <div
+        key={idx}
+        className="flex-shrink-0 w-[80%] sm:w-[70%] sm:min-h-[25vh] lg:hidden bg-[#464646] text-white rounded-3xl p-4 snap-start"
+      >
+        <div className={`rounded-3xl p-4 h-full flex flex-col justify-between bg-[${tech.bg}]`}>
+          <h3 className="text-2xl font-bold">{`0${idx + 1}.`}</h3>
+          <div>
+            <p className="text-lg font-semibold mt-3.5">{tech.title}</p>
+            <p className="text-sm font-normal mt-1.5">{tech.desc}</p>
+          </div>
+        </div>
+      </div>
+    ))}
   </div>
 </div>
 
 
 
-      {/* You can add components here */}
+{/* footer section */}
+<div className="w-full grid grid-cols-12 gap-5 mt-16 p-5 mb-8">
+
+
+{/* 1️⃣ Left Contact Info Column */}
+<div className="col-span-12 md:col-span-4 bg-[#464646] text-center rounded-3xl text-white p-5 flex flex-col gap-6">
+
+  <Image 
+    src="/footer-tech-tycoons-logo.webp" 
+    alt="Logo" 
+    width={128}
+    height={128}
+    className="mx-auto"
+  />
+
+  {/* Address with underline hover */}
+  <div className="relative flex items-start gap-3 text-sm leading-relaxed cursor-pointer group">
+    <HiLocationMarker size={24} />
+    <div className="text-lg font-normal group-hover:text-[#F04F24] transition-colors duration-300">
+      Basement, Ankru Complex,<br />
+      Naranpura, Ahmedabad,<br />
+      Gujarat, India.
+    </div>
+    <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#F04F24] transition-all duration-500 group-hover:w-full"></span>
+  </div>
+
+  {/* Phone with underline hover */}
+  <div className="relative flex items-center gap-3 text-lg font-normal cursor-pointer group">
+    <MdPhone size={24} />
+    <span className="hover:text-[#F04F24] transition-colors duration-300">
+      +91 99130 86449
+    </span>
+    <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#F04F24] transition-all duration-500 group-hover:w-full"></span>
+  </div>
+
+  {/* Email with underline hover */}
+  <div className="relative flex items-center gap-3 text-lg font-normal cursor-pointer group">
+    <MdEmail size={24} />
+    <span className="hover:text-[#F04F24] transition-colors duration-300">
+      sales@techtycoons.in
+    </span>
+    <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#F04F24] transition-all duration-500 group-hover:w-full"></span>
+  </div>
+
+  {/* Social Icons */}
+  <div className="flex justify-center space-x-4 mt-3">
+    <div className="bg-white p-3 rounded-full text-[#464646] cursor-pointer transition-all duration-300 transform hover:bg-[#F04F24] hover:text-white hover:scale-110 hover:shadow-lg">
+      <FaInstagram size={20} />
+    </div>
+    <div className="bg-white p-3 rounded-full text-[#464646] cursor-pointer transition-all duration-300 transform hover:bg-[#F04F24] hover:text-white hover:scale-110 hover:shadow-lg">
+      <FaFacebookF size={20} />
+    </div>
+    <div className="bg-white p-3 rounded-full text-[#464646] cursor-pointer transition-all duration-300 transform hover:bg-[#F04F24] hover:text-white hover:scale-110 hover:shadow-lg">
+      <FaLinkedinIn size={20} />
+    </div>
+  </div>
+
+</div>
+
+
+  {/* <!-- 2️⃣ Middle Contact Form Column --> */}
+  <div className="col-span-12 md:col-span-4 bg-white rounded-3xl shadow-sm p-4 flex flex-col gap-6">
+    <input type="text" placeholder="Name" className="border border-gray-300 rounded-lg p-3 focus:outline-none" />
+    <input type="text" placeholder="Company Name" className="border border-gray-300 rounded-lg p-3 focus:outline-none" />
+    <input type="text" placeholder="Contact Number" className="border border-gray-300 rounded-lg p-3 focus:outline-none" />
+    <input type="text" placeholder="What are you looking for?" className="border border-gray-300 rounded-lg p-3 focus:outline-none" />
+
+<div className="flex space-x-4">
+
+  {/* Submit Button */}
+  <button className="group bg-[#7DBB42] hover:bg-[#F04F24] hover:rounded-sm text-white rounded-full px-6 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 overflow-hidden">
+    Submit
+    <span className="inline-block opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+      →
+    </span>
+  </button>
+
+  {/* Reset Button */}
+  <button className="group bg-[#329FD9] hover:bg-[#F04F24] hover:rounded-sm text-white rounded-full px-6 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 overflow-hidden">
+    Reset
+    <span className="inline-block opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+      ✕
+    </span>
+  </button>
+
+</div>
+
+
+  </div>
+{/* 
+  <!-- 3️⃣ Right Map Iframe Column --> */}
+  <div className="col-span-12 md:col-span-4 bg-white rounded-3xl  shadow-lg">
+ <iframe
+  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3671.0521422648158!2d72.5533866753149!3d23.05854987914861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjPCsDAzJzMwLjgiTiA3MsKwMzMnMjEuNSJF!5e0!3m2!1sen!2sin!4v1758009591347!5m2!1sen!2sin"
+  width="100%"
+  height="100%"
+  className="rounded-lg"
+  style={{ border: 0 }}
+  allowFullScreen
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade">
+</iframe>
+
+  </div>
+
+</div>
+<div className="flex flex-wrap items-center justify-center gap-3 lg:gap-10 text-black">
+  {[
+    "IT Infrastructure & Networking",
+    "AI Based Automation",
+    "Cloud Solutions",
+    "Cybersecurity & Compliance",
+    "IT Consulting & Support",
+    "Software Development & Integration",
+    "Branding Design",
+  ].map((text, idx) => (
+    <p
+      key={idx}
+      className="text-lg font-medium  relative cursor-pointer after:content-[''] after:block after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 after:mt-1 hover:after:w-full"
+    >
+      {text}
+    </p>
+  ))}
+</div>
+
+<div className="flex justify-center items-center mt-5 ">
+  <p className="bg-[#464646] inline-block px-5 py-1 text-sm text-white font-extralight rounded-full">
+     © 2025 Tech Tycoons. All rights reserved</p></div>
+     
     </div>
   );
 }
