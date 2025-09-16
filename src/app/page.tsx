@@ -93,7 +93,7 @@ const technologiesMobile = [
 export default function Home() {
  const [showMore, setShowMore] = useState(false);
   const contentRef = useRef<HTMLParagraphElement | null>(null);
-  const [maxHeight, setMaxHeight] = useState<string>("5rem"); // ~3 lines
+  const [maxHeight, setMaxHeight] = useState<string>("0rem"); // ~3 lines
 
   const content = `At Tech Tycoons, we are more than just an IT solutions agency—we are technology innovators,
 problem solvers, and digital transformation partners. With a passion for cutting-edge technology, 
@@ -141,7 +141,7 @@ const handleDotClick = (idx: number) => {
     className="object-cover"
   />
     <h1 className="text-4xl md:text-6xl font-light text-white absolute left-5 md:left-10 top-3 md:top-5">
-    <span className="text-3xl md:text-5xl">making things possible for</span>  
+    <span className="text-3xl md:text-5xl font-semibold">making things possible </span> <br></br> <span className="text-3xl md:text-5xl">for </span>
       <Typewriter
         options={{
           strings: ['problem solving.', 'brand building.', 'ease of operations.'],
@@ -180,10 +180,10 @@ const handleDotClick = (idx: number) => {
     {/* Text container */}
     <div
       className="relative overflow-hidden transition-all duration-500 ease-in-out"
-      style={{ maxHeight }}
+     
     >
       <p
-        ref={contentRef}
+        
         className="text-sm sm:text-lg md:text-lg  lg:text-lg xl:text-xl text-black transition-opacity duration-500"
       >
         {content}
@@ -198,7 +198,7 @@ const handleDotClick = (idx: number) => {
 
 {/* technologies we use */}
 
-<div className="w-full mt-2 bg-amber-300 lg:mt-12 hidden sm:flex flex-col items-center">
+<div className="w-full mt-2  lg:mt-12 hidden sm:flex flex-col items-center">
       {/* Technologies Section */}
       <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-6 w-full">
           <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[20vh]  flex lg:hidden items-center justify-center">
