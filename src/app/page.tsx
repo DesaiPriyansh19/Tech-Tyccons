@@ -121,9 +121,10 @@ const [currentIndex, setCurrentIndex] = useState(0);
     return () => clearInterval(interval);
   }, [totalSlides]);
 
-  const handleDotClick = (idx) => {
-    setCurrentIndex(idx);
-  };
+const handleDotClick = (idx: number) => {
+  setCurrentIndex(idx);
+};
+
 
 
   return (
