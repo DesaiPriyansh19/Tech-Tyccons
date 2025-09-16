@@ -154,7 +154,7 @@ const handleDotClick = (idx: number) => {
 </div>
 
 {/* About Us */}
-<div className="mt-8  sm:mt-12 bg-amber-200 rounded-2xl flex flex-col md:flex-row gap-5 justify-center sm:justify-start px-3 py-1 sm:py-3 w-full border-[1.1px] border-black ">
+<div className="mt-8  sm:mt-12 bg-white rounded-2xl flex flex-col md:flex-row gap-5 justify-center sm:justify-start px-3 py-1 sm:py-3 w-full border-[1.1px] border-black ">
      <h2 className="text-[#7DBB42]  flex sm:hidden text-[2rem] sm:text-4xl lg:text-6xl font-bold sm:font-semibold text-center ">
       Something About Us
     </h2>
