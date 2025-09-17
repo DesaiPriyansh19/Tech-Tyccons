@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-[1.2px] border-black rounded-full py-2 px-4 flex items-center justify-between relative  w-full mx-auto">
+    <nav className="bg-white border-[1.2px] border-black rounded-full py-2 md:mt-4 px-4 flex items-center justify-between relative  w-full mx-auto">
       {/* Logo */}
       <div>
         <Image src="/nav-logo.webp" width={150} height={40} alt="Logo" />
@@ -19,18 +19,18 @@ export default function Navbar() {
       <li key={index} className="relative group">
         <a
           href="#"
-          className="flex items-center text-black transition-colors duration-300 group-hover:!text-[#F04F24]"
+          className="flex items-center text-black transition-all duration-300 group-hover:!text-[#F04F24] group-hover:translate-x-1.5 hover:px-4"
         >
-              <span className="mr-2  text-lg opacity-0 transform translate-x-0 rotate-0 group-hover:opacity-100 group-hover:translate-x-1  transition-all duration-300">
+          <span className="mr-2 text-lg opacity-0 transform translate-x-0 group-hover:opacity-100 transition-all duration-300">
             →
           </span>
           {item}
-      
         </a>
       </li>
     )
   )}
 </ul>
+
 
 
 

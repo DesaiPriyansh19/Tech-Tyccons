@@ -6,6 +6,9 @@ import { FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
 import { HiLocationMarker } from 'react-icons/hi'
 import { MdEmail, MdPhone } from 'react-icons/md'
 import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const technologies = [
     {
     src: "/Next-JS.webp",
@@ -102,7 +105,12 @@ Founded with the vision to redefine IT excellence, Tech Tycoons is a team of tec
 and cybersecurity specialists committed to delivering high-performance IT infrastructure, 
 cloud solutions, cybersecurity, and digital transformation services.
 We help businesses adapt, evolve, and thrive in the ever-changing digital landscape.`;
-
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // animation duration in ms
+      once: true,     // whether animation should happen only once
+    });
+  }, []);
   // Update maxHeight dynamically when showMore toggles
   useEffect(() => {
     if (contentRef.current) {
@@ -127,13 +135,18 @@ const handleDotClick = (idx: number) => {
   setCurrentIndex(idx);
 };
 
+const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
 
 
   return (
     <div className="  w-full">
 
 {/* Hero Section */}
-<div className="mt-2 w-full  rounded-2xl h-[39vh] sm:h-[40vh] lg:h-[82vh] relative overflow-hidden">
+<div className="mt-2 w-full   rounded-2xl h-[39vh] sm:h-[40vh] lg:h-[82vh] relative overflow-hidden" data-aos="fade-in">
   <Image
     src="/Banner.webp"
     alt="Background"
@@ -198,120 +211,131 @@ const handleDotClick = (idx: number) => {
 
 {/* technologies we use */}
 
-<div className="w-full mt-2  lg:mt-12 hidden sm:flex flex-col items-center">
-      {/* Technologies Section */}
-      <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-6 w-full">
-          <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[20vh]  flex lg:hidden items-center justify-center">
-          <h2 className="text-5xl font-semibold text-[#464646] text-center">
+  {/* Desktop Layout */}
+      <div className="w-full mt-2 lg:mt-12 hidden sm:flex flex-col items-center">
+        <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-6 w-full text-start">
+          {/* Left Static Heading for small screens */}
+          <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[20vh] flex lg:hidden items-center justify-center ">
+            <h2 className="text-5xl font-semibold text-[#464646] ">
+              Technologies <br /> We Use
+            </h2>
+          </div>
+
+          {/* Slides */}
+          <div className="relative flex-1 overflow-hidden">
+            <div
+              className="flex transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {Array.from({ length: totalSlides }).map((_, slideIdx) => {
+                const start = slideIdx * 2;
+                const items = technologies.slice(start, start + 2);
+
+                return (
+                  <div
+                    key={slideIdx}
+                    className="flex min-w-full justify-center gap-6"
+                  >
+                    {items.map((tech, idx) => (
+                      <div
+                        key={idx}
+                        className="border rounded-3xl py-4 px-3 min-w-[40%] h-[40vh] bg-white border-gray-300 shadow-md hover:shadow-xl transition"
+                      >
+                        <Image
+                          src={tech.src}
+                          alt={tech.alt}
+                          width={tech.width}
+                          height={tech.height}
+                          className="mx-auto"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Dots */}
+            {mounted && (
+              <div className="flex justify-center lg:mt-6 gap-2">
+                {Array.from({ length: totalSlides }).map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleDotClick(idx)}
+                    className={`w-3 h-3 rounded-full transition ${
+                      idx === currentIndex ? "bg-[#464646]" : "bg-gray-400"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Right Static Heading for large screens */}
+          <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[40vh] hidden lg:flex items-center justify-center">
+            <h2 className="text-5xl font-semibold text-[#464646] text-start">
+              Technologies <br /> We Use
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Layout */}
+      <div className="w-full mt-0 flex flex-col items-center md:hidden">
+        <div className="rounded-3xl py-2.5 px-4 w-full h-[10vh] mt-12 flex items-center justify-center">
+          <h2 className="text-3xl font-semibold text-[#464646] text-center">
             Technologies <br /> We Use
           </h2>
         </div>
-        {/* Slides */}
-        <div className="relative flex-1 overflow-hidden">
+
+        <div className="relative w-full overflow-hidden sm:mt-6">
           <div
             className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {Array.from({ length: totalSlides }).map((_, slideIdx) => {
-              const start = slideIdx * 2;
-              const items = technologies.slice(start, start + 2);
-
-              return (
-                <div
-                  key={slideIdx}
-                  className="flex min-w-full justify-center gap-6"
-                >
-                  {items.map((tech, idx) => (
-                    <div
-                      key={idx}
-                      className="border rounded-3xl py-4 px-3 min-w-[40%] h-[40vh] bg-white border-gray-300 shadow-md hover:shadow-xl transition"
-                    >
-                      <Image
-                        src={tech.src}
-                        alt={tech.alt}
-                        width={tech.width}
-                        height={tech.height}
-                        className="mx-auto"
-                      />
-                    
-                    </div>
-                  ))}
+            {Array.from({ length: totalSlides }).map((_, slideIdx) => (
+              <div
+                key={slideIdx}
+                className="flex min-w-full justify-center gap-4"
+              >
+                <div className="flex w-full justify-around">
+                  {technologies
+                    .slice(slideIdx * 1, slideIdx * 1 + 1)
+                    .map((tech, idx) => (
+                      <div
+                        key={idx}
+                        className="border rounded-3xl py-4 px-3 w-[80%] bg-white border-gray-300 shadow-md hover:shadow-xl transition"
+                      >
+                        <Image
+                          src={tech.src}
+                          alt={tech.alt}
+                          width={tech.width}
+                          height={tech.height}
+                          className="mx-auto"
+                        />
+                      </div>
+                    ))}
                 </div>
-              );
-            })}
-          </div>
-
-          {/* Dots */}
-          <div className="flex justify-center lg:mt-6 gap-2">
-            {Array.from({ length: totalSlides }).map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleDotClick(idx)}
-                className={`w-3 h-3 rounded-full transition ${
-                  idx === currentIndex ? "bg-[#464646]" : "bg-gray-400"
-                }`}
-              />
+              </div>
             ))}
           </div>
-        </div>
 
-        {/* Static Heading */}
-         
-        <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[40vh] hidden lg:flex items-center justify-center">
-          <h2 className="text-5xl font-semibold text-[#464646] text-center">
-            Technologies <br /> We Use
-          </h2>
+          {/* Mobile Dots */}
+          {mounted && (
+            <div className="flex justify-center mt-6 gap-2">
+              {technologies.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleDotClick(idx)}
+                  className={`w-3 h-3 rounded-full transition ${
+                    idx === currentIndex ? "bg-[#464646]" : "bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
-    </div>
-{/* Mobile Layout */}
-<div className="w-full mt-0 flex flex-col items-center md:hidden">
-  {/* Heading */}
-  <div className="rounded-3xl  py-2.5 px-4 w-full h-[10vh] mt-12 flex items-center justify-center">
-    <h2 className="text-3xl font-semibold text-[#464646] text-center">
-      Technologies <br /> We Use
-    </h2>
-  </div>
-
-  {/* Slides */}
-  <div className="relative w-full overflow-hidden  sm:mt-6">
-    <div
-      className="flex transition-transform duration-700 ease-in-out"
-      style={{ transform: `translateX(-${currentIndex * 100}%)` }} // 1 slide per view
-    >
-      {technologies.map((tech, idx) => (
-        <div
-          key={idx}
-          className="min-w-full flex justify-center px-3"
-        >
-          <div className="border rounded-3xl py-4 px-3 w-[90%] h-[40vh] bg-white border-gray-300 shadow-md hover:shadow-xl transition">
-            <Image
-              src={tech.src}
-              alt={tech.alt}
-              width={tech.width}
-              height={tech.height}
-              className="mx-auto"
-            />
-          </div>
-        </div>
-      ))}
-    </div>
-
-    {/* Dots */}
-    <div className="flex justify-center mt-6 gap-2">
-      {technologies.map((_, idx) => (
-        <button
-          key={idx}
-          onClick={() => handleDotClick(idx)}
-          className={`w-3 h-3 rounded-full transition ${
-            idx === currentIndex ? "bg-[#464646]" : "bg-gray-400"
-          }`}
-        />
-      ))}
-    </div>
-  </div>
-</div>
-
 
 {/* This Is What We Do */}
 <div className="w-full  hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-14 sm:mt-12  text-white">
@@ -489,7 +513,7 @@ const handleDotClick = (idx: number) => {
 <div className="flex space-x-4">
 
   {/* Submit Button */}
-  <button className="group bg-[#7DBB42] hover:bg-[#F04F24] hover:rounded-sm text-white rounded-full px-6 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 overflow-hidden">
+  <button className="group bg-[#7DBB42]  hover:rounded-sm text-white rounded-full px-6 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 overflow-hidden">
     Submit
     <span className="inline-block opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
       →
@@ -497,7 +521,7 @@ const handleDotClick = (idx: number) => {
   </button>
 
   {/* Reset Button */}
-  <button className="group bg-[#329FD9] hover:bg-[#F04F24] hover:rounded-sm text-white rounded-full px-6 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 overflow-hidden">
+  <button className="group bg-[#329FD9]  hover:rounded-sm text-white rounded-full px-6 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 overflow-hidden">
     Reset
     <span className="inline-block opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
       ✕
