@@ -39,7 +39,7 @@ export default function CursorFollower() {
   return (
     <div
       ref={cursorRef}
-      className="hidden sm:fixed top-0 left-0 w-2 h-2 z-50 bg-[#464646] rounded-full pointer-events-none"
+      className="hidden sm:flex fixed top-0 left-0 w-2 h-2 z-50 bg-[#464646] rounded-full pointer-events-none"
     ></div>
   );
 }
