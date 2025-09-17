@@ -108,7 +108,7 @@ We help businesses adapt, evolve, and thrive in the ever-changing digital landsc
   useEffect(() => {
     AOS.init({
       duration: 1000, // animation duration in ms
-      once: true,     // whether animation should happen only once
+     once: false,  // Allow repeated animations on scroll    // whether animation should happen only once
     });
   }, []);
   // Update maxHeight dynamically when showMore toggles
@@ -143,18 +143,18 @@ useEffect(() => {
 
 
   return (
-    <div className="  w-full">
+    <div className="  w-full pb-2 sm:pb-0">
 
 {/* Hero Section */}
-<div className="mt-2 w-full   rounded-2xl h-[39vh] sm:h-[40vh] lg:h-[82vh] relative overflow-hidden" data-aos="fade-in">
+<div className="mt-2 w-full   rounded-2xl h-[65vh] sm:h-[40vh] lg:h-[82vh] relative overflow-hidden" >
   <Image
     src="/Banner.webp"
     alt="Background"
     fill
     className="object-cover"
   />
-    <h1 className="text-4xl md:text-6xl font-light text-white absolute left-5 md:left-10 top-3 md:top-5">
-    <span className="text-3xl md:text-5xl font-semibold">making things possible </span> <br></br> <span className="text-3xl md:text-5xl">for </span>
+    <h1 className="text-3xl md:text-6xl font-light text-white absolute left-5 md:left-10 top-3 md:top-5">
+    <span className="text-2xl md:text-5xl font-semibold">making things possible </span> <br></br> <span className="text-2xl sm:text-3xl md:text-5xl">for </span>
       <Typewriter
         options={{
           strings: ['problem solving.', 'brand building.', 'ease of operations.'],
@@ -169,7 +169,7 @@ useEffect(() => {
 </div>
 
 {/* About Us */}
-<div className="mt-8  sm:mt-12 bg-white rounded-2xl flex flex-col md:flex-row gap-5 justify-center sm:justify-start px-3 py-1 sm:py-3 w-full border-[1.1px] border-black ">
+<div  className="mt-8  sm:mt-12 bg-white rounded-2xl flex flex-col md:flex-row gap-5 justify-center sm:justify-start px-3 py-1 sm:py-3 w-full border-[1.1px] border-black " >
      <h2 className="text-[#7DBB42]  flex sm:hidden text-[2rem] sm:text-4xl lg:text-6xl font-bold sm:font-semibold text-center ">
       Something About Us
     </h2>
@@ -338,7 +338,7 @@ useEffect(() => {
       </div>
 
 {/* This Is What We Do */}
-<div className="w-full  hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-14 sm:mt-12  text-white">
+<div className="w-full  hidden gap-0 lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-14 sm:mt-12  text-white">
 
   <div className="h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] text-[#464646] rounded-br-3xl text-center font-bold sm:font-semibold text-[2rem] sm:text-6xl flex items-center justify-center p-6">
     This is What we do?
@@ -346,70 +346,70 @@ useEffect(() => {
 
   <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] pl-3.5 pr-2 py-4 rounded-tl-2xl font-semibold text-start">
     <div className="bg-[#7DBB42] rounded-3xl p-4 h-full flex flex-col justify-between">
-      <h3 className="text-2xl sm:text-3xl font-bold">01.</h3>
+      <h3 className="text-2xl sm:text-3xl xl:text-4xl font-bold">01.</h3>
       <div>
-        <p className=" text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">IT Infrastructure & Networking</p>
-        <p className="text-sm md:text-2xl lg:text-sm font-normal mt-1.5">Reliable, secure, and high-performing IT setups.</p>
+        <p className=" text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">IT Infrastructure & Networking</p>
+        <p className="text-sm xl:text-lg md:text-2xl lg:text-sm font-normal mt-1.5">Reliable, secure, and high-performing IT setups.</p>
       </div>
     </div>
   </div>
 
   <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
     <div className="bg-[#2DA0D9] rounded-3xl p-4 h-full flex flex-col justify-between">
-      <h3 className="text-2xl sm:text-3xl font-bold">02.</h3>
+      <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">02.</h3>
       <div>
-        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">AI Based Automation</p>
-        <p className="text-sm font-normal mt-1.5">Optimizing business processes with AI-driven automation.</p>
+        <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">AI Based Automation</p>
+        <p className="text-sm xl:text-lg font-normal mt-1.5">Optimizing business processes with AI-driven automation.</p>
       </div>
     </div>
   </div>
 
   <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 rounded-tr-2xl font-semibold text-start">
     <div className="bg-[#F04F24] rounded-3xl p-4 h-full flex flex-col justify-between">
-      <h3 className="text-2xl sm:text-3xl font-bold">03.</h3>
+      <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">03.</h3>
       <div>
-        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">Cloud Solutions</p>
-        <p className="text-sm font-normal mt-1.5">Migration, deployment, and cloud management on AWS, Azure, and hybrid platforms.</p>
+        <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">Cloud Solutions</p>
+        <p className="text-sm xl:text-lg font-normal mt-1.5">Migration, deployment, and cloud management on AWS, Azure, and hybrid platforms.</p>
       </div>
     </div>
   </div>
 
   <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 rounded-tl-2xl rounded-bl-2xl  font-semibold text-start">
     <div className="bg-[#2DA0D9] rounded-3xl p-4 h-full flex flex-col justify-between">
-      <h3 className="text-2xl sm:text-3xl font-bold">04.</h3>
+      <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">04.</h3>
       <div>
-        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-2.5">Cybersecurity & Compliance</p>
-        <p className="text-sm font-normal mt-1">Advanced firewall security, data protection, and threat detection.</p>
+        <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-2.5">Cybersecurity & Compliance</p>
+        <p className="text-sm xl:text-lg font-normal mt-1">Advanced firewall security, data protection, and threat detection.</p>
       </div>
     </div>
   </div>
 
   <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
     <div className="bg-[#F04F24] rounded-3xl p-4 h-full flex flex-col justify-between">
-      <h3 className="text-2xl sm:text-3xl font-bold">05.</h3>
+      <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">05.</h3>
       <div>
-        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">IT Consulting & Support</p>
-        <p className="text-sm font-normal mt-1.5">Strategic IT guidance and 24/7 enterprise support.</p>
+        <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">IT Consulting & Support</p>
+        <p className="text-sm xl:text-lg font-normal mt-1.5">Strategic IT guidance and 24/7 enterprise support.</p>
       </div>
     </div>
   </div>
 
   <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
     <div className="bg-[#2DA0D9] rounded-3xl p-4 h-full flex flex-col justify-between">
-      <h3 className="text-2xl sm:text-3xl font-bold">06.</h3>
+      <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">06.</h3>
       <div>
-        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">Software Development & Integration</p>
-        <p className="text-sm font-normal relative bottom-0">Custom-built business applications & seamless software integration.</p>
+        <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">Software Development & Integration</p>
+        <p className="text-sm xl:text-lg font-normal relative bottom-0">Custom-built business applications & seamless software integration.</p>
       </div>
     </div>
   </div>
 
   <div className="bg-[#464646] h-auto sm:h-[25vh] lg:rounded-br-2xl md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
     <div className="bg-[#7DBB42] rounded-3xl p-4 h-full flex flex-col justify-between">
-      <h3 className="text-2xl sm:text-3xl font-bold">07.</h3>
+      <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">07.</h3>
       <div>
-        <p className="text-lg md:text-3xl lg:text-lg font-semibold mt-3.5">Branding Design</p>
-        <p className="text-sm font-normal relative bottom-0">Extraordinary Branding design for an extraordinary Brand value.</p>
+        <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">Branding Design</p>
+        <p className="text-sm xl:text-lg font-normal relative bottom-0">Extraordinary Branding design for an extraordinary Brand value.</p>
       </div>
     </div>
   </div>
@@ -568,8 +568,8 @@ useEffect(() => {
   ))}
 </div>
 
-<div className="flex justify-center items-center mt-5 ">
-  <p className="bg-[#464646] inline-block px-5 py-1 text-sm text-white font-extralight rounded-full">
+<div className="flex justify-center items-center mt-5  ">
+  <p className="bg-[#464646] inline-block px-5 py-1 text-sm mb-8 text-white font-extralight rounded-full">
      © 2025 Tech Tycoons. All rights reserved</p></div>
      
     </div>

@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-[1.2px] border-black rounded-full py-2 md:mt-4 px-4 flex items-center justify-between relative  w-full mx-auto">
+    <nav className="bg-white border-[1.2px] border-black rounded-full py-2 mt-3.5 md:mt-4 px-4 flex items-center justify-between relative  w-full mx-auto">
       {/* Logo */}
       <div>
         <Image src="/nav-logo.webp" width={150} height={40} alt="Logo" />

@@ -27,10 +27,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
- 
+   <CursorFollower/>
       <body className={`${inconsolata.variable} antialiased `}>
         <SmoothScroll>
-        <CursorFollower/>
+      
         {/* Example of global Header */}
         <header className="w-full">
                <Navbar/>

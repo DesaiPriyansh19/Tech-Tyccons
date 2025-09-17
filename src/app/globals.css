@@ -17,11 +17,13 @@ body {
   background-color: #F7F7F7;
   color: #111;
    font-family: var(--font-inconsolata);
-      margin-left: 10;
-   margin-right: 10;
-   margin-top: 0;
-   margin-bottom: 15;
-padding: 0;
+        padding-top: 0;
+             padding-bottom: 0;
+     padding-left: 10;
+   padding-right: 10;
+   margin: 0;
+
+
 }
 
 a {
