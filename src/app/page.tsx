@@ -8,33 +8,33 @@ import { MdEmail, MdPhone } from 'react-icons/md'
 import { motion } from "framer-motion";
 const technologies = [
     {
-    src: "/nextjs-logo.webp",
+    src: "/Next-JS.webp",
     alt: "Next.js",
 
-    width: 140,
-    height: 140,
+    width: 170,
+    height: 170,
   },
   {
     
-    src: "/mern3.png",
+    src: "/Mern-Stack-Logo.webp",
     alt: "MERN Stack",
  
     width: 170,
     height: 170,
   },
   {
-    src: "/react-native-logo.png",
+    src: "/React-Native-Logo.webp",
     alt: "React Native",
 
-    width: 190,
-    height: 190,
+    width: 170,
+    height: 170,
   },
   {
-    src: "/strapi-logo.png",
+    src: "/Strapi.webp",
     alt: "Strapi CMS",
 
-    width: 150,
-    height: 150,
+    width: 170,
+    height: 170,
   },
 
 ];
@@ -118,7 +118,7 @@ const [currentIndex, setCurrentIndex] = useState(0);
       setCurrentIndex((prev) =>
         prev + 1 >= totalSlides ? 0 : prev + 1
       );
-    }, 6000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [totalSlides]);
