@@ -1,16 +1,15 @@
-"use client";
-
 import { useEffect, useRef } from "react";
 
 export default function CursorFollower() {
-  const cursorRef = useRef(null);
+  // Strongly type the ref as HTMLDivElement | null
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let mouseX = 0;
     let mouseY = 0;
     let currentX = 0;
     let currentY = 0;
-    const speed = 0.2; // Lower = slower, higher = faster
+    const speed = 0.2;
 
     const moveCursor = () => {
       currentX += (mouseX - currentX) * speed;
@@ -23,13 +22,13 @@ export default function CursorFollower() {
       requestAnimationFrame(moveCursor);
     };
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    moveCursor(); // start the animation loop
+    moveCursor();
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
