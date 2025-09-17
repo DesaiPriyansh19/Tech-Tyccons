@@ -288,53 +288,109 @@ useEffect(() => {
           </h2>
         </div>
 
-        <div className="relative w-full overflow-hidden sm:mt-6">
-          <div
-            className="flex transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {Array.from({ length: totalSlides }).map((_, slideIdx) => (
+{/* Mobile Slider (1 per slide) */}
+<div className="relative w-full overflow-hidden mt-3.5 sm:hidden">
+  <div
+    className="flex transition-transform duration-700 ease-in-out"
+    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+  >
+    {Array.from({ length: technologies.length }).map((_, slideIdx) => (
+      <div
+        key={slideIdx}
+        className="flex min-w-full justify-center gap-4"
+      >
+        <div className="flex w-full justify-around">
+          {technologies
+            .slice(slideIdx, slideIdx + 1) // 1 item per slide
+            .map((tech, idx) => (
               <div
-                key={slideIdx}
-                className="flex min-w-full justify-center gap-4"
+                key={idx}
+                className="border rounded-3xl py-4 px-3 w-[80%] bg-white border-gray-300 shadow-md hover:shadow-xl transition"
               >
-                <div className="flex w-full justify-around">
-                  {technologies
-                    .slice(slideIdx * 1, slideIdx * 1 + 1)
-                    .map((tech, idx) => (
-                      <div
-                        key={idx}
-                        className="border rounded-3xl py-4 px-3 w-[80%] bg-white border-gray-300 shadow-md hover:shadow-xl transition"
-                      >
-                        <Image
-                          src={tech.src}
-                          alt={tech.alt}
-                          width={tech.width}
-                          height={tech.height}
-                          className="mx-auto"
-                        />
-                      </div>
-                    ))}
-                </div>
+                <Image
+                  src={tech.src}
+                  alt={tech.alt}
+                  width={tech.width}
+                  height={tech.height}
+                  className="mx-auto"
+                />
               </div>
             ))}
-          </div>
-
-          {/* Mobile Dots */}
-          {mounted && (
-            <div className="flex justify-center mt-6 gap-2">
-              {technologies.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleDotClick(idx)}
-                  className={`w-3 h-3 rounded-full transition ${
-                    idx === currentIndex ? "bg-[#464646]" : "bg-gray-400"
-                  }`}
-                />
-              ))}
-            </div>
-          )}
         </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Mobile Dots */}
+  {mounted && (
+    <div className="flex justify-center mt-6 gap-2">
+      {technologies.map((_, idx) => (
+        <button
+          key={idx}
+          onClick={() => handleDotClick(idx)}
+          className={`w-3 h-3 rounded-full transition ${
+            idx === currentIndex ? "bg-[#464646]" : "bg-gray-400"
+          }`}
+        />
+      ))}
+    </div>
+  )}
+</div>
+
+{/* Desktop Slider (2 per slide) */}
+<div className="relative w-full overflow-hidden mt-3.5 hidden sm:block">
+  <div
+    className="flex transition-transform duration-700 ease-in-out"
+    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+  >
+    {Array.from({ length: Math.ceil(technologies.length / 2) }).map(
+      (_, slideIdx) => (
+        <div
+          key={slideIdx}
+          className="flex min-w-full justify-center gap-4"
+        >
+          <div className="flex w-full justify-around">
+            {technologies
+              .slice(slideIdx * 2, slideIdx * 2 + 2) // 2 items per slide
+              .map((tech, idx) => (
+                <div
+                  key={idx}
+                  className="border rounded-3xl py-4 px-3 w-[45%] bg-white border-gray-300 shadow-md hover:shadow-xl transition"
+                >
+                  <Image
+                    src={tech.src}
+                    alt={tech.alt}
+                    width={tech.width}
+                    height={tech.height}
+                    className="mx-auto"
+                  />
+                </div>
+              ))}
+          </div>
+        </div>
+      )
+    )}
+  </div>
+
+  {/* Desktop Dots */}
+  {mounted && (
+    <div className="flex justify-center mt-6 gap-2">
+      {Array.from({ length: Math.ceil(technologies.length / 2) }).map(
+        (_, idx) => (
+          <button
+            key={idx}
+            onClick={() => handleDotClick(idx)}
+            className={`w-3 h-3 rounded-full transition ${
+              idx === currentIndex ? "bg-[#464646]" : "bg-gray-400"
+            }`}
+          />
+        )
+      )}
+    </div>
+  )}
+</div>
+
+
       </div>
 
 {/* This Is What We Do */}
