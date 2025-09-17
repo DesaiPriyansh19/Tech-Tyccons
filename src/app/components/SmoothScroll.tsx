@@ -2,34 +2,26 @@
 
 import { useEffect, useRef, ReactNode } from "react";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+import LocomotiveScroll from "locomotive-scroll"; // Import class for typing
 
 interface SmoothScrollProps {
   children: ReactNode;
 }
 
-// LocomotiveScroll type
-type LocomotiveScrollType = {
-  new (options: any): {
-    destroy: () => void;
-  };
-};
-
 export default function SmoothScroll({ children }: SmoothScrollProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let scroll: { destroy: () => void } | null = null;
+    let scroll: InstanceType<typeof LocomotiveScroll> | null = null;
 
     const initScroll = async () => {
-      const LocomotiveScroll: LocomotiveScrollType = (
-        await import("locomotive-scroll")
-      ).default;
+      const LocomotiveScrollModule = (await import("locomotive-scroll")).default;
 
       if (scrollRef.current) {
-        scroll = new LocomotiveScroll({
+        scroll = new LocomotiveScrollModule({
           el: scrollRef.current,
           smooth: true,
-          multiplier: 1, // increase sensitivity
+          multiplier: 1,
         });
       }
     };
