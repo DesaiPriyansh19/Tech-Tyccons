@@ -8,11 +8,11 @@ export default function Navbar() {
 
   // Section names and their IDs
   const navItems = [
-    { name: "Know Us", id: "know-us" },
+    { name: "Know Us", id: "" },
     // { name: "Products", id: "products" },
-    { name: "Services", id: "services" },
+    { name: "Services", id: "" },
     // { name: "Projects", id: "projects" },
-    { name: "Contact", id: "contact" },
+    { name: "Contact", id: "" },
   ];
 
   return (
