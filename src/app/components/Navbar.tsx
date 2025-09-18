@@ -16,26 +16,18 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white z-10 border-[1.1px] border-black rounded-full py-3 sm:py-2 lg:py-3 mt-3.5 md:mt-4 px-4 flex items-center justify-between relative w-full mx-auto">
+    <nav className="bg-white border-[1.1px] border-black rounded-full py-3 sm:py-2 lg:py-3 mt-3.5 md:mt-4 px-4 flex items-center justify-between relative w-full mx-auto">
       {/* Logo */}
       <div>
         <Image src="/nav-logo.webp" width={150} height={40} alt="Logo" />
       </div>
 
       {/* Desktop Menu */}
-      <ul className="hidden md:flex  mr-8 space-x-8 font-medium">
+      <ul className="hidden md:flex  mr-6 space-x-8 font-medium">
         {navItems.map((item, index) => (
           <li key={index} className="relative group">
             <a
               href={`#${item.id}`}
-              onClick={(e) => {
-    e.preventDefault();
-    const el = document.querySelector(`#${item.id}`);
-    if (el && (window as any).locoScroll) {
-      (window as any).locoScroll.scrollTo(el);
-    }
-
-  }}
               className="relative flex items-center text-black pl-3"
             >
               <span className="absolute left-0 opacity-0 group-hover:opacity-100 transition-all duration-50 text-[#F04F24]">
