@@ -18,28 +18,53 @@ function Footer() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-      if (res.ok) {
-        alert("Message sent successfully!");
-        setFormData({ name: "", company: "", contact: "", message: "" }); // reset
-      } else {
-        alert("Something went wrong. Try again later.");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Error sending message");
+  // ✅ Validation
+  if (!formData.name.trim()) {
+    alert("Please enter your name.");
+    return;
+  }
+  if (!formData.company.trim()) {
+    alert("Please enter your company name.");
+    return;
+  }
+  if (!formData.contact.trim()) {
+    alert("Please enter your contact number.");
+    return;
+  }
+  // Optional: basic phone number validation (10 digits)
+  if (!/^\d{10}$/.test(formData.contact)) {
+    alert("Please enter a valid 10-digit contact number.");
+    return;
+  }
+  if (!formData.message.trim()) {
+    alert("Please enter a message.");
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (res.ok) {
+      alert("Message sent successfully!");
+      setFormData({ name: "", company: "", contact: "", message: "" }); // reset
+    } else {
+      alert("Something went wrong. Try again later.");
     }
-  };
+  } catch (err) {
+    console.error(err);
+    alert("Error sending message");
+  }
+};
+
 
   const [showMap, setShowMap] = useState(false);
 
@@ -50,7 +75,7 @@ useEffect(() => {
   return (
    <>
    {/* footer section */}
-<div className="w-full grid grid-cols-12 gap-5 mt-16 p-5 mb-8">
+<div className="w-full grid grid-cols-12 gap-5 mt-16 p-5 mb-4">
 
 
 {/* 1️⃣ Left Contact Info Column */}
@@ -118,7 +143,13 @@ useEffect(() => {
       <input type="text" name="message" placeholder="What are you looking for?" value={formData.message} onChange={handleChange} className="border border-gray-500 rounded-2xl p-3 focus:outline-none" />
 
       <div className="flex space-x-4 text-sm lg:text-[1rem] text-center">
-        <button type="submit" className="group bg-[#7DBB42] text-center text-white rounded-full px-4 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-500 hover:scale-105 overflow-hidden">
+  <button
+  type="submit"
+  className="group bg-[#7DBB42] text-center text-white rounded-3xl 
+             hover:rounded-md transition-all duration-300 ease-in-out
+             px-4 py-2 font-semibold flex items-center gap-2  
+             hover:scale-105 overflow-hidden">
+
           Submit
           <span className="inline-block opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">→</span>
         </button>
@@ -126,7 +157,10 @@ useEffect(() => {
         <button  type="button" // NOT "reset"
   onClick={() =>
     setFormData({ name: "", company: "", contact: "", message: "" })
-  } className="group bg-[#329FD9] text-center text-white rounded-full px-4 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 overflow-hidden">
+  } className="group bg-[#329FD9] text-center text-white rounded-3xl 
+             hover:rounded-md transition-all duration-300 ease-in-out
+             px-4 py-2 font-semibold flex items-center gap-2  
+             hover:scale-105 overflow-hidden">
           Reset
           <span className="inline-block opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">✕</span>
         </button>

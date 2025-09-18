@@ -28,24 +28,34 @@ export default function Home() {
 
 
   return (
-    <div className="  w-full pb-2 sm:pb-0">
+    <div className="  w-full pb-2 sm:pb-0 " >
 
 {/* Hero Section */}
-<HeroSection/>
-
-
-<AbutUsSection/>
+<section id="">
+<HeroSection />
+</section>
 
 {/* technologies we use */}
+<section id="">
 <TechnologiesWeUse/>
+</section> 
+
+{/* About US */}
+<section id="" >
+<AbutUsSection/>
+</section>
+
+
 
 {/* This Is What We Do */}
+<section id="" >
 <ThisIsWhatWeDo/>
+</section>
 
-
-
+{/* Footer */}
+<section id="" >
 <Footer/>
-     
+     </section>
     </div>
   );
 }

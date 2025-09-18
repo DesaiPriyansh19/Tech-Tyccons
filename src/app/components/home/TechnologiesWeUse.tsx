@@ -62,9 +62,51 @@ useEffect(() => {
 
   return (
 <>
+<div className='w-full mt-12 '>
+
+<div className='flex justify-start ml-5 items-center gap-4 mt-5 '>
+    <h3 className='text-3xl md:ml-4 font-semibold text-[#464646] mr-5'>Technologies We Use</h3>
+   <div className='border-[1px] bg-white border-black rounded-full '>
+     <Image 
+      src="/Next-JS.webp" 
+      alt="Logo" 
+      width={108}
+      height={108}
+      className="mx-auto hover:scale-115 transition-all duration-400 bg-blur"
+    />        
+    </div>
+   <div className='border-[1px] bg-white border-black rounded-full'>
+     <Image 
+      src="/Mern-Stack-Logo.webp" 
+      alt="Logo" 
+      width={108}
+      height={108}
+      className="mx-auto hover:scale-115 transition-all duration-400"
+    />        
+    </div>
+      <div className='border-[1px] bg-white border-black rounded-full '>
+     <Image 
+      src="/React-Native-Logo.webp" 
+      alt="Logo" 
+      width={108}
+      height={108}
+      className="mx-auto hover:scale-115 transition-all duration-400"
+    />        
+    </div>
+      <div className='border-[1px] bg-white border-black rounded-full'>
+     <Image 
+      src="/Strapi.webp" 
+      alt="Logo" 
+      width={108}
+      height={108}
+      className="mx-auto hover:scale-115 transition-all duration-400"
+    />        
+    </div>
+   </div>
+   </div>
 
  {/* Desktop Layout */}
-      <div className="w-full mt-2 lg:mt-12 hidden sm:flex flex-col items-center">
+      <div className="w-full mt-2 lg:mt-12 hidden 4xl:flex flex-col items-center">
         <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-6 w-full text-start">
           {/* Left Static Heading for small screens */}
           <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[20vh] flex lg:hidden items-center justify-center ">
