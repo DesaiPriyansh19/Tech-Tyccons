@@ -169,13 +169,14 @@ useEffect(() => {
 </div>
 
 {/* About Us */}
-<div  className="mt-8  sm:mt-12 bg-white rounded-2xl flex flex-col md:flex-row gap-5 justify-center sm:justify-start px-3 py-1 sm:py-3 w-full border-[1.1px] border-black " >
-     <h2 className="text-[#7DBB42]  flex sm:hidden text-[2rem] sm:text-4xl lg:text-6xl font-bold sm:font-semibold text-center ">
-      Something About Us
-    </h2>
+<div className="mt-8 sm:mt-12 bg-white rounded-2xl flex flex-col md:flex-row gap-5 justify-center sm:justify-start px-3 py-1 sm:py-3 w-full border-[1.1px] border-black">
+  {/* Small Screen Heading */}
+  <h2 className="text-[#7DBB42] flex sm:hidden text-[2rem] sm:text-4xl lg:text-6xl font-bold text-center">
+    Something About Us
+  </h2>
+
   {/* Image */}
-  <div className="rounded-2xl h-64 w-full md:h-[30vh] lg:h-[50vh]  lg:w-[25vw] xl:w-[30vw] bg-amber-600 relative overflow-hidden">
-   
+  <div className="rounded-2xl h-64 w-full md:h-[30vh] lg:h-[50vh] lg:w-[25vw] xl:w-[30vw] bg-amber-600 relative overflow-hidden">
     <Image
       src="/about-us-man-img.webp"
       alt="Background"
@@ -184,30 +185,40 @@ useEffect(() => {
     />
   </div>
 
-  {/* Text */}
+  {/* Text + Button */}
   <div className="w-full pb-6 md:w-[75vw] xl:w-[70vw] flex flex-col relative">
-    <h2 className="text-[#7DBB42] hidden sm:flex  text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-semibold text-start mb-2">
+    {/* Large Screen Heading */}
+    <h2 className="text-[#7DBB42] hidden sm:flex text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-semibold text-start mb-2">
       Something About Us
     </h2>
 
     {/* Text container */}
-    <div
-      className="relative overflow-hidden transition-all duration-500 ease-in-out"
-     
-    >
-      <p
-        
-        className="text-sm sm:text-lg md:text-lg  lg:text-lg xl:text-xl text-black transition-opacity duration-500"
-      >
+    <div className="relative overflow-hidden transition-all duration-500 ease-in-out">
+      <p className="text-sm sm:text-lg lg:text-lg xl:text-xl text-black transition-opacity duration-500">
         {content}
       </p>
-
-    
     </div>
 
+    {/* Button (bottom right) */}
+    <div className="absolute bottom-0 right-0">
+      <a
+        href="#"
+        className="relative flex items-center pl-5 pr-5 py-2 border border-black rounded-3xl hover:rounded-sm transition-all duration-500 text-black font-medium group overflow-hidden"
+      >
+        {/* Arrow */}
+        <span className="absolute left-2 opacity-0 group-hover:opacity-100 transition-all duration-300 text-[#F04F24]">
+          →
+        </span>
 
+        {/* Text */}
+        <span className="transition-all text-sm font-semibold duration-300 group-hover:translate-x-2 group-hover:text-[#F04F24] ">
+          know More
+        </span>
+      </a>
+    </div>
   </div>
 </div>
+
 
 {/* technologies we use */}
 
@@ -239,7 +250,7 @@ useEffect(() => {
                     {items.map((tech, idx) => (
                       <div
                         key={idx}
-                        className="border rounded-3xl py-4 px-3 min-w-[40%] h-[40vh] bg-white border-gray-300 shadow-md hover:shadow-xl transition"
+                        className="rounded-2xl py-4 px-3 min-w-[40%] h-[40vh] bg-white  border-black border-[1px] transition"
                       >
                         <Image
                           src={tech.src}
@@ -305,7 +316,7 @@ useEffect(() => {
             .map((tech, idx) => (
               <div
                 key={idx}
-                className="border rounded-3xl py-4 px-3 w-[80%] bg-white border-gray-300 shadow-md hover:shadow-xl transition"
+                className="rounded-3xl py-4 px-3 w-[80%] bg-white  border-black border-[1px] transition"
               >
                 <Image
                   src={tech.src}
@@ -400,73 +411,157 @@ useEffect(() => {
     This is What we do?
   </div>
 
-  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] pl-3.5 pr-2 py-4 rounded-tl-2xl font-semibold text-start">
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[50vh] xl:h-[45vh] pl-3.5 pr-2 py-4 rounded-tl-2xl font-semibold text-start relative">
     <div className="bg-[#7DBB42] rounded-3xl p-4 h-full flex flex-col justify-between">
       <h3 className="text-2xl sm:text-3xl xl:text-4xl font-bold">01.</h3>
       <div>
         <p className=" text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">IT Infrastructure & Networking</p>
-        <p className="text-sm xl:text-lg md:text-2xl lg:text-sm font-normal mt-1.5">Reliable, secure, and high-performing IT setups.</p>
+        <p className="text-sm xl:text-lg md:text-2xl lg:text-sm font-normal mt-1.5 mb-3">Reliable, secure, and high-performing IT setups.</p>
       </div>
+       {/* Small "Know More" btn */}
+      <a
+        href="#"
+        className="absolute bottom-6 right-8 flex items-center group text-[.8rem] font-light hover:font-extrabold "
+      >
+        <span className="absolute -left-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          →
+        </span>
+        <span className="transition-all duration-300 group-hover:translate-x-2">
+          Know More
+        </span>
+      </a>
     </div>
   </div>
 
-  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[50vh] xl:h-[45vh] px-2 py-4 font-semibold text-start relative">
     <div className="bg-[#2DA0D9] rounded-3xl p-4 h-full flex flex-col justify-between">
       <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">02.</h3>
       <div>
         <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">AI Based Automation</p>
-        <p className="text-sm xl:text-lg font-normal mt-1.5">Optimizing business processes with AI-driven automation.</p>
+        <p className="text-sm xl:text-lg font-normal mt-1.5 mb-4">Optimizing business processes with AI-driven automation.</p>
       </div>
+          {/* Small "Know More" btn */}
+      <a
+        href="#"
+        className="absolute bottom-6 right-8 flex items-center group text-[.8rem] font-light hover:font-extrabold "
+      >
+        <span className="absolute -left-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          →
+        </span>
+        <span className="transition-all duration-300 group-hover:translate-x-2">
+          Know More
+        </span>
+      </a>
     </div>
   </div>
 
-  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 rounded-tr-2xl font-semibold text-start">
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[50vh] xl:h-[45vh] px-2 py-4 rounded-tr-2xl font-semibold text-start relative">
     <div className="bg-[#F04F24] rounded-3xl p-4 h-full flex flex-col justify-between">
       <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">03.</h3>
       <div>
         <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">Cloud Solutions</p>
-        <p className="text-sm xl:text-lg font-normal mt-1.5">Migration, deployment, and cloud management on AWS, Azure, and hybrid platforms.</p>
+        <p className="text-sm xl:text-lg font-normal mt-1.5 mb-4">Migration, deployment, and cloud management on AWS, Azure, and hybrid platforms.</p>
       </div>
+          {/* Small "Know More" btn */}
+      <a
+        href="#"
+        className="absolute bottom-6 right-8 flex items-center group text-[.8rem] font-light hover:font-extrabold "
+      >
+        <span className="absolute -left-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          →
+        </span>
+        <span className="transition-all duration-300 group-hover:translate-x-2">
+          Know More
+        </span>
+      </a>
     </div>
   </div>
 
-  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 rounded-tl-2xl rounded-bl-2xl  font-semibold text-start">
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[50vh] xl:h-[45vh] px-2 py-4 rounded-tl-2xl rounded-bl-2xl  font-semibold text-start relative">
     <div className="bg-[#2DA0D9] rounded-3xl p-4 h-full flex flex-col justify-between">
       <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">04.</h3>
       <div>
         <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-2.5">Cybersecurity & Compliance</p>
-        <p className="text-sm xl:text-lg font-normal mt-1">Advanced firewall security, data protection, and threat detection.</p>
+        <p className="text-sm xl:text-lg font-normal mt-1 mb-2">Advanced firewall security, data protection, and threat detection.</p>
       </div>
+          {/* Small "Know More" btn */}
+      <a
+        href="#"
+        className="absolute bottom-6 right-8 flex items-center group text-[.8rem] font-light hover:font-extrabold "
+      >
+        <span className="absolute -left-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          →
+        </span>
+        <span className="transition-all duration-300 group-hover:translate-x-2">
+          Know More
+        </span>
+      </a>
     </div>
   </div>
 
-  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[50vh] xl:h-[45vh] px-2 py-4 font-semibold text-start relative">
     <div className="bg-[#F04F24] rounded-3xl p-4 h-full flex flex-col justify-between">
       <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">05.</h3>
       <div>
         <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">IT Consulting & Support</p>
-        <p className="text-sm xl:text-lg font-normal mt-1.5">Strategic IT guidance and 24/7 enterprise support.</p>
+        <p className="text-sm xl:text-lg font-normal mt-1.5 mb-2">Strategic IT guidance and 24/7 enterprise support.</p>
       </div>
+          {/* Small "Know More" btn */}
+      <a
+        href="#"
+        className="absolute bottom-6 right-8 flex items-center group text-[.8rem] font-light hover:font-extrabold "
+      >
+        <span className="absolute -left-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          →
+        </span>
+        <span className="transition-all duration-300 group-hover:translate-x-2">
+          Know More
+        </span>
+      </a>
     </div>
   </div>
 
-  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
+  <div className="bg-[#464646] h-auto sm:h-[25vh] md:h-[30vh] lg:h-[50vh] xl:h-[45vh] px-2 py-4 font-semibold text-start relative">
     <div className="bg-[#2DA0D9] rounded-3xl p-4 h-full flex flex-col justify-between">
       <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">06.</h3>
       <div>
         <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">Software Development & Integration</p>
-        <p className="text-sm xl:text-lg font-normal relative bottom-0">Custom-built business applications & seamless software integration.</p>
+        <p className="text-sm xl:text-lg font-normal relative bottom-0 mb-2">Custom-built business applications & seamless software integration.</p>
       </div>
+          {/* Small "Know More" btn */}
+      <a
+        href="#"
+        className="absolute bottom-6 right-8 flex items-center group text-[.8rem] font-light hover:font-extrabold "
+      >
+        <span className="absolute -left-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          →
+        </span>
+        <span className="transition-all duration-300 group-hover:translate-x-2">
+          Know More
+        </span>
+      </a>
     </div>
   </div>
 
-  <div className="bg-[#464646] h-auto sm:h-[25vh] lg:rounded-br-2xl md:h-[30vh] lg:h-[45vh] px-2 py-4 font-semibold text-start">
+  <div className="bg-[#464646] h-auto sm:h-[25vh] lg:rounded-br-2xl md:h-[30vh] lg:h-[50vh] xl:h-[45vh] px-2 py-4 font-semibold text-start relative">
     <div className="bg-[#7DBB42] rounded-3xl p-4 h-full flex flex-col justify-between">
       <h3 className="text-2xl sm:text-3xl xl:text-4xl  font-bold">07.</h3>
       <div>
         <p className="text-lg md:text-3xl lg:text-lg xl:text-3xl font-semibold mt-3.5">Branding Design</p>
-        <p className="text-sm xl:text-lg font-normal relative bottom-0">Extraordinary Branding design for an extraordinary Brand value.</p>
+        <p className="text-sm xl:text-lg font-normal relative bottom-0 mb-3">Extraordinary Branding design for an extraordinary Brand value.</p>
       </div>
+          {/* Small "Know More" btn */}
+      <a
+        href="#"
+        className="absolute bottom-6 right-8 flex items-center group text-[.8rem] font-light hover:font-extrabold "
+      >
+        <span className="absolute -left-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          →
+        </span>
+        <span className="transition-all duration-300 group-hover:translate-x-2">
+          Know More
+        </span>
+      </a>
     </div>
   </div>
 
@@ -504,7 +599,7 @@ useEffect(() => {
 
 
 {/* 1️⃣ Left Contact Info Column */}
-<div className="col-span-12 md:col-span-4 bg-[#464646] text-center rounded-3xl text-white p-5 flex flex-col gap-6">
+<div className="col-span-12 md:col-span-4 bg-[#464646] text-center rounded-3xl text-white p-5 flex flex-col items-center justify-center gap-6">
 
   <Image 
     src="/footer-tech-tycoons-logo.webp" 
@@ -560,24 +655,24 @@ useEffect(() => {
 
 
   {/* <!-- 2️⃣ Middle Contact Form Column --> */}
-  <div className="col-span-12 md:col-span-4 bg-white rounded-3xl shadow-sm p-4 flex flex-col gap-6">
-    <input type="text" placeholder="Name" className="border border-gray-300 rounded-lg p-3 focus:outline-none" />
-    <input type="text" placeholder="Company Name" className="border border-gray-300 rounded-lg p-3 focus:outline-none" />
-    <input type="text" placeholder="Contact Number" className="border border-gray-300 rounded-lg p-3 focus:outline-none" />
-    <input type="text" placeholder="What are you looking for?" className="border border-gray-300 rounded-lg p-3 focus:outline-none" />
+  <div className="col-span-12 md:col-span-4 bg-white rounded-3xl border-black border-[1px] p-4 flex flex-col gap-6">
+    <input type="text" placeholder="Name" className="border border-gray-500 rounded-2xl p-3 focus:outline-none" />
+    <input type="text" placeholder="Company Name" className=" border border-gray-500 rounded-2xl  p-3 focus:outline-none" />
+    <input type="text" placeholder="Contact Number" className=" border border-gray-500 rounded-2xl  p-3 focus:outline-none" />
+    <input type="text" placeholder="What are you looking for?" className=" border border-gray-500 rounded-2xl  p-3 focus:outline-none" />
 
-<div className="flex space-x-4">
+<div className="flex space-x-4 text-sm lg:text-[1rem] text-center">
 
   {/* Submit Button */}
-  <button className="group bg-[#7DBB42]  hover:rounded-sm text-white rounded-full px-6 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 overflow-hidden">
+  <button className="group bg-[#7DBB42] text-center  hover:rounded-sm text-white rounded-full px-4 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-500 hover:scale-105 overflow-hidden">
     Submit
-    <span className="inline-block opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+    <span className="inline-block opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">
       →
     </span>
   </button>
 
   {/* Reset Button */}
-  <button className="group bg-[#329FD9]  hover:rounded-sm text-white rounded-full px-6 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 overflow-hidden">
+  <button className="group bg-[#329FD9]  text-center hover:rounded-sm text-white rounded-full px-4 py-2 font-semibold flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 overflow-hidden">
     Reset
     <span className="inline-block opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
       ✕
@@ -590,7 +685,7 @@ useEffect(() => {
   </div>
 {/* 
   <!-- 3️⃣ Right Map Iframe Column --> */}
-  <div className="col-span-12 md:col-span-4 bg-white rounded-3xl  shadow-lg">
+  <div className="col-span-12 md:col-span-4 bg-white rounded-3xl  ">
  <iframe
   src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3671.0521422648158!2d72.5533866753149!3d23.05854987914861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjPCsDAzJzMwLjgiTiA3MsKwMzMnMjEuNSJF!5e0!3m2!1sen!2sin!4v1758009591347!5m2!1sen!2sin"
   width="100%"

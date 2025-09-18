@@ -7,29 +7,36 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-[1.2px] border-black rounded-full py-2 mt-3.5 md:mt-4 px-4 flex items-center justify-between relative  w-full mx-auto">
+    <nav className="bg-white border-[1.1px] border-black rounded-full py-2 lg:py-3 mt-3.5 md:mt-4 px-4 flex items-center justify-between relative  w-full mx-auto ">
       {/* Logo */}
       <div>
         <Image src="/nav-logo.webp" width={150} height={40} alt="Logo" />
       </div>
-
-<ul className="hidden md:flex space-x-2 lg:space-x-8 font-medium">
+<ul className="hidden md:flex space-x-8 font-medium">
   {["Know Us", "Products", "Services", "Projects", "Contact"].map(
     (item, index) => (
       <li key={index} className="relative group">
         <a
           href="#"
-          className="flex items-center text-black transition-all duration-300 group-hover:!text-[#F04F24] group-hover:translate-x-1.5 hover:px-4"
+          className="relative flex items-center text-black pl-3" // 👈 reserve space for arrow
         >
-          <span className="mr-2 text-lg opacity-0 transform translate-x-0 group-hover:opacity-100 transition-all duration-300">
+          {/* Arrow - absolute, uses that reserved space */}
+          <span
+            className="absolute  left-0 opacity-0 group-hover:opacity-100 transition-all duration-50 text-[#F04F24]"
+          >
             →
           </span>
-          {item}
+
+          {/* Text - slides right only */}
+          <span className="transition-all duration-300 group-hover:translate-x-2 group-hover:text-[#F04F24]">
+            {item}
+          </span>
         </a>
       </li>
     )
   )}
 </ul>
+
 
 
 
