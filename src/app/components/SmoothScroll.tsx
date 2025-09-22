@@ -30,22 +30,25 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 
       locoScrollRef.current.on("scroll", ScrollTrigger.update);
 
-      ScrollTrigger.scrollerProxy(scrollRef.current, {
-        scrollTop(value) {
-          return arguments.length
-            ? locoScrollRef.current!.scrollTo(value, 0, 0)
-            : locoScrollRef.current!.scroll.instance.scroll.y;
-        },
-        getBoundingClientRect() {
-          return {
-            top: 0,
-            left: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          };
-        },
-        pinType: scrollRef.current.style.transform ? "transform" : "fixed",
-      });
+ScrollTrigger.scrollerProxy(scrollRef.current!, {
+  scrollTop(value?: number | string | HTMLElement) {
+    if (value !== undefined) {
+      locoScrollRef.current!.scrollTo(value, { duration: 0, offset: 0 });
+    }
+    return locoScrollRef.current!.scroll.instance.scroll.y;
+  },
+  getBoundingClientRect() {
+    return {
+      top: 0,
+      left: 0,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  },
+  pinType: scrollRef.current!.style.transform ? "transform" : "fixed",
+});
+
+
 
       ScrollTrigger.addEventListener("refresh", () => locoScrollRef.current?.update());
       ScrollTrigger.refresh();
