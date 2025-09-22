@@ -63,9 +63,11 @@ useEffect(() => {
   return (
 <>
 <div className='w-full mt-12 '>
-
-<div className='flex justify-start ml-5 items-center gap-4 mt-5 '>
-    <h3 className='text-3xl md:ml-4 font-semibold text-[#464646] mr-5'>Technologies We Use</h3>
+   <h3 className='flex  sm:hidden text-3xl mx-auto  md:ml-4 font-semibold text-[#464646] text-center w-full '>Technologies We Use </h3>
+<div className='flex justify-start ml-5 items-center gap-4 mt-5  '>
+    <h3 className='hidden sm:flex text-3xl md:ml-4 font-semibold text-[#464646] mr-5 '>Technologies We Use</h3>
+     
+       
    <div className='border-[1px] bg-white border-black rounded-full '>
      <Image 
       src="/Next-JS.webp" 
@@ -106,16 +108,16 @@ useEffect(() => {
    </div>
 
  {/* Desktop Layout */}
-      <div className="w-full mt-2 lg:mt-12 hidden 4xl:flex flex-col items-center">
+      {/* <div className="w-full mt-2 lg:mt-12 hidden 4xl:flex flex-col items-center">
         <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-6 w-full text-start">
-          {/* Left Static Heading for small screens */}
+
           <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[20vh] flex lg:hidden items-center justify-center ">
             <h2 className="text-5xl font-semibold text-[#464646] ">
               Technologies <br /> We Use
             </h2>
           </div>
 
-          {/* Slides */}
+         
           <div className="relative flex-1 overflow-hidden">
             <div
               className="flex transition-transform duration-700 ease-in-out"
@@ -149,7 +151,7 @@ useEffect(() => {
               })}
             </div>
 
-            {/* Dots */}
+           
             {mounted && (
               <div className="flex justify-center lg:mt-6 gap-2">
                 {Array.from({ length: totalSlides }).map((_, idx) => (
@@ -165,24 +167,23 @@ useEffect(() => {
             )}
           </div>
 
-          {/* Right Static Heading for large screens */}
           <div className="rounded-3xl py-2.5 px-4 min-w-[25%] h-[40vh] hidden lg:flex items-center justify-center">
             <h2 className="text-5xl font-semibold text-[#464646] text-start">
               Technologies <br /> We Use
             </h2>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Mobile Layout */}
-      <div className="w-full mt-0 flex flex-col items-center md:hidden">
+      {/* <div className="w-full mt-0 flex flex-col items-center md:hidden">
         <div className="rounded-3xl py-2.5 px-4 w-full h-[10vh] mt-12 flex items-center justify-center">
           <h2 className="text-3xl font-semibold text-[#464646] text-center">
             Technologies <br /> We Use
           </h2>
         </div>
 
-{/* Mobile Slider (1 per slide) */}
+
 <div className="relative w-full overflow-hidden mt-3.5 sm:hidden">
   <div
     className="flex transition-transform duration-700 ease-in-out"
@@ -195,7 +196,7 @@ useEffect(() => {
       >
         <div className="flex w-full justify-around">
           {technologies
-            .slice(slideIdx, slideIdx + 1) // 1 item per slide
+            .slice(slideIdx, slideIdx + 1) 
             .map((tech, idx) => (
               <div
                 key={idx}
@@ -215,7 +216,7 @@ useEffect(() => {
     ))}
   </div>
 
-  {/* Mobile Dots */}
+
   {mounted && (
     <div className="flex justify-center mt-6 gap-2">
       {technologies.map((_, idx) => (
@@ -231,7 +232,7 @@ useEffect(() => {
   )}
 </div>
 
-{/* Desktop Slider (2 per slide) */}
+
 <div className="relative w-full overflow-hidden mt-3.5 hidden sm:block">
   <div
     className="flex transition-transform duration-700 ease-in-out"
@@ -245,7 +246,7 @@ useEffect(() => {
         >
           <div className="flex w-full justify-around">
             {technologies
-              .slice(slideIdx * 2, slideIdx * 2 + 2) // 2 items per slide
+              .slice(slideIdx * 2, slideIdx * 2 + 2) 
               .map((tech, idx) => (
                 <div
                   key={idx}
@@ -266,7 +267,7 @@ useEffect(() => {
     )}
   </div>
 
-  {/* Desktop Dots */}
+ 
   {mounted && (
     <div className="flex justify-center mt-6 gap-2">
       {Array.from({ length: Math.ceil(technologies.length / 2) }).map(
@@ -285,7 +286,7 @@ useEffect(() => {
 </div>
 
 
-      </div>
+      </div> */}
 </>
   )
 }
