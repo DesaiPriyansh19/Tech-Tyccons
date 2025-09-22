@@ -9,7 +9,7 @@ import AbutUsSection from "./components/home/AbutUsSection";
 import ThisIsWhatWeDo from "./components/home/ThisIsWhatWeDo";
 import HeroSection from "./components/home/HeroSection";
 import TechnologiesWeUse from "./components/home/TechnologiesWeUse";
-
+import Reveal from "./components/Reveal";
 
 
 
@@ -32,17 +32,23 @@ export default function Home() {
 
 {/* Hero Section */}
 <section id="">
+
 <HeroSection />
+
 </section>
 
 {/* technologies we use */}
 <section id="">
+  <Reveal>
 <TechnologiesWeUse/>
+</Reveal>
 </section> 
 
 {/* About US */}
 <section id="" >
+  <Reveal>
 <AbutUsSection/>
+</Reveal>
 </section>
 
 

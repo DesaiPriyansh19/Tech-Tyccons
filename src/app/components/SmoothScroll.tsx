@@ -1,35 +1,61 @@
 "use client";
 
-import { useEffect, useRef, ReactNode } from "react";
-import "locomotive-scroll/dist/locomotive-scroll.css";
-import LocomotiveScroll from "locomotive-scroll"; // Import class for typing
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface SmoothScrollProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export default function SmoothScroll({ children }: SmoothScrollProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let scroll: InstanceType<typeof LocomotiveScroll> | null = null;
+    let locoScroll: any; // fallback type if no TS support from library
 
     const initScroll = async () => {
-      const LocomotiveScrollModule = (await import("locomotive-scroll")).default;
+      // ✅ Import only on client side
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
 
       if (scrollRef.current) {
-        scroll = new LocomotiveScrollModule({
+        locoScroll = new LocomotiveScroll({
           el: scrollRef.current,
           smooth: true,
           multiplier: 1,
         });
+
+        // ✅ Sync Locomotive with GSAP ScrollTrigger
+        locoScroll.on("scroll", ScrollTrigger.update);
+
+        ScrollTrigger.scrollerProxy(scrollRef.current, {
+          scrollTop(value) {
+            return arguments.length
+              ? locoScroll.scrollTo(value, 0, 0)
+              : locoScroll.scroll.instance.scroll.y;
+          },
+          getBoundingClientRect() {
+            return {
+              top: 0,
+              left: 0,
+              width: window.innerWidth,
+              height: window.innerHeight,
+            };
+          },
+          pinType: scrollRef.current.style.transform ? "transform" : "fixed",
+        });
+
+        ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+        ScrollTrigger.refresh();
       }
     };
 
     initScroll();
 
     return () => {
-      if (scroll) scroll.destroy();
+      if (locoScroll) locoScroll.destroy();
     };
   }, []);
 
